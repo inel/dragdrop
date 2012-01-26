@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+user_x:
+  username: x
+  password: x
+  active: true
+
+user_y:
+  username: y
+  password: y
+  active: false
+  
+

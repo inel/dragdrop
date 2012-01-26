@@ -1,0 +1,55 @@
+  <HTML>
+  <HEAD>
+  <TITLE>Voter Status Editor</TITLE>
+  <style>
+  .hover {
+    background-color: #888888;
+  }
+  #active_voters ul li, #inactive_voters ul li {
+    list-style : none;
+    cursor: -moz-grab;
+  }
+  #active_voters, #inactive_voters {
+    border: 1px solid gray;
+    min-height: 3em;
+  }
+  </style>
+  </HEAD>
+
+  <BODY>
+  <center>
+  <h2>Voter Status Editor</h2>
+  </center>
+
+  <h3>Active</h3>
+
+  <div id="active_voters">
+    <%= drop_receiving_element('active_voters',
+        :accept     => 'inactive_voters',
+        :complete   => "$('spinner').hide();",
+        :before     => "$('spinner').show();",
+        :hoverclass => 'hover',
+        :with       => "'voter=' + encodeURIComponent(element.id.split('_').last())",
+        :url        => {:action=>:make_active})%>
+    <%= render :partial=>"active_voters" %>
+  </div>
+
+  <h3>Inactive</h3>
+
+  <div id="inactive_voters">
+    <%= drop_receiving_element('inactive_voters',
+        :accept     => 'active_voters',
+        :complete   => "$('spinner').hide();",
+        :before     => "$('spinner').show();",
+        :hoverclass => 'hover',
+        :with       => "'voter=' + encodeURIComponent(element.id.split('_').last())",
+        :url        => {:action=>:make_inactive})%>
+    <%= render :partial=>"inactive_voters" %>
+  </div>
+
+  <div id='spinner' align=left style="display:none;">
+    <h5>busy</h5>
+  </div>
+
+  </BODY>
+  </HTML>

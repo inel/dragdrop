@@ -1,0 +1,41 @@
+  <HTML>
+  <HEAD>
+  <TITLE>Question List</TITLE>
+  </HEAD>
+
+  <BODY>
+  <center>
+  <h2><span id="title">Please Place Your Vote</span></h2>
+  </center>
+
+  You can vote on whichever issues you care to vote at this time and return
+  later to vote on other issues.
+
+  <%= form_tag :action => 'record_votes' do %>
+
+  <%= hidden_field_tag(:username, @uname) %>
+
+  <ol>
+  <% for question in @questions %>
+    <p>
+    <li><font size=+1><%= question.body %>   
+        <%= select "question", question.id,
+                   [["Your vote?", :no_vote], ["Yes", :yes], ["No", :no],
+                    ["Abstain", :abstain]] %>
+        </font>
+        <br />
+        <font size=-1>(Vote due by: <%= question.end %>)</font>
+    </li>
+  <% end %>
+
+  <b />
+
+  <center>
+  <p>
+  <%= submit_tag "Place Vote(s)" %>
+  </center>
+
+  <% end %>
+
+  </BODY>
+  </HTML>

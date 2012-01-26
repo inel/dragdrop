@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  voter_id: 1
+  question_id: 1
+  is_yes: false
+
+two:
+  voter_id: 1
+  question_id: 1
+  is_yes: false

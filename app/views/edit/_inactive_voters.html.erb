@@ -1,0 +1,9 @@
+  <div id="inactive_voter_list">
+    <ul>
+      <% @inactive_voters.each { |v| %>
+           <% domid = "voter_#{v.id}" %>
+           <li class="inactive_voters" id='<%= domid %>'>Пользователь1</li>
+           <%= draggable_element(domid, :ghosting=>true, :revert=>true) %>
+      <% } %>
+    </ul>
+  </div>
